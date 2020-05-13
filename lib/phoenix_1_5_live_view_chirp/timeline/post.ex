@@ -14,7 +14,7 @@ defmodule Phoenix15LiveViewChirp.Timeline.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:username, :body, :likes_count, :reposts_count])
-    |> validate_required([:username, :body, :likes_count, :reposts_count])
+    |> cast(attrs, [:body])
+    |> validate_required([:body])
   end
 end
