@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :phoenix_1_5_live_view_chirp, Phoenix15LiveViewChirp.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "phoenix_1_5_live_view_chirp_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
