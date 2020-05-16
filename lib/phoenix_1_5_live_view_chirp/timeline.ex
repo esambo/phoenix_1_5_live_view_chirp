@@ -72,7 +72,7 @@ defmodule Phoenix15LiveViewChirp.Timeline do
     post
     |> Post.changeset(attrs)
     |> Repo.update()
-    |> broadcast(:post_created)
+    |> broadcast(:post_updated)
   end
 
   @doc """
