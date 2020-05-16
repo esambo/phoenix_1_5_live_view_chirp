@@ -53,6 +53,7 @@ defmodule Phoenix15LiveViewChirp.Timeline do
     %Post{}
     |> Post.changeset(attrs)
     |> Repo.insert()
+    |> broadcast(:post_created)
   end
 
   @doc """
@@ -71,6 +72,7 @@ defmodule Phoenix15LiveViewChirp.Timeline do
     post
     |> Post.changeset(attrs)
     |> Repo.update()
+    |> broadcast(:post_created)
   end
 
   @doc """
@@ -100,5 +102,24 @@ defmodule Phoenix15LiveViewChirp.Timeline do
   """
   def change_post(%Post{} = post, attrs \\ %{}) do
     Post.changeset(post, attrs)
+  end
+
+  @doc """
+  Allow users to subscribe to our events that we are broadcasting.
+  """
+  def subscribe do
+    topic = "posts"
+    Phoenix.PubSub.subscribe(Phoenix15LiveViewChirp.PubSub, topic)
+  end
+
+  @doc """
+  Broadcast to the world that a post has been created or updated.
+  """
+  defp broadcast({:error, _reason} = error, _event), do: error
+  defp broadcast({:ok, post}, event) do
+    topic = "posts"
+    event_data = {event, post}
+    Phoenix.PubSub.broadcast(Phoenix15LiveViewChirp.PubSub, topic, event_data)
+    {:ok, post}
   end
 end
