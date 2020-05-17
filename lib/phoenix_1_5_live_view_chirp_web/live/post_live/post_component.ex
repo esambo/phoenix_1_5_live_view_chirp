@@ -17,11 +17,15 @@ defmodule Phoenix15LiveViewChirpWeb.PostLive.PostComponent do
 
       <div class="row">
         <div class="column">
-          <i class="far fa-heart"></i>
+          <a href="#" phx-click="like" phx-target="<%= @myself %>">
+            <i class="far fa-heart"></i>
+          </a>
           <%= @post.likes_count %>
         </div>
         <div class="column">
-          <i class="fas fa-retweet"></i>
+          <a href="#" phx-click="repost" phx-target="<%= @myself %>">
+            <i class="fas fa-retweet"></i>
+          </a>
           <%= @post.reposts_count %>
         </div>
         <div class="column">
@@ -35,5 +39,15 @@ defmodule Phoenix15LiveViewChirpWeb.PostLive.PostComponent do
       </div>
     </div>
     """
+  end
+
+  def handle_event("like", _payload, socket) do
+    Phoenix15LiveViewChirp.Timeline.inc_likes(socket.assigns.post)
+    {:noreply, socket}
+  end
+
+  def handle_event("repost", _payload, socket) do
+    Phoenix15LiveViewChirp.Timeline.inc_reposts(socket.assigns.post)
+    {:noreply, socket}
   end
 end
