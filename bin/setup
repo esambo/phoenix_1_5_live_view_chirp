@@ -1,0 +1,8 @@
+#!/bin/bash
+
+asdf install
+mix deps.get
+mix compile
+createuser --createdb postgres || true
+mix do ecto.drop, setup
+MIX_ENV=test mix do ecto.create, ecto.migrate
