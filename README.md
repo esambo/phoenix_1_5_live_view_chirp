@@ -1,4 +1,13 @@
-# Phoenix15LiveViewChirp
+# Chirp
+A Twitter timeline clone from scratch using Phoenix LiveView.
+Based on [Build a real-time Twitter clone in 15 minutes with LiveView and Phoenix 1.5](https://www.phoenixframework.org/blog/build-a-real-time-twitter-clone-in-15-minutes-with-live-view-and-phoenix-1-5)
+
+The goal is to show:
+- how great LiveView is to build interactive applications
+- not having to write any JavaScript to make it happen
+- the amount of data on the wire will be more efficient than the best single page app you could write by hand
+
+## Setup
 
 To start your Phoenix server:
 
