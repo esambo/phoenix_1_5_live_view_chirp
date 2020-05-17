@@ -21,7 +21,7 @@ defmodule Phoenix15LiveViewChirpWeb.PostLive.PostComponent do
           <%= @post.likes_count %>
         </div>
         <div class="column">
-          <i class="far fa-retweet"></i>
+          <i class="fas fa-retweet"></i>
           <%= @post.reposts_count %>
         </div>
         <div class="column">
