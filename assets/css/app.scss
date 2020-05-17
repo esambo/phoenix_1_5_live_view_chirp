@@ -89,3 +89,18 @@
 .alert:empty {
   display: none;
 }
+
+.post {
+  border-style: solid;
+  border-width: thin;
+  border-color: gray;
+  padding: 0.4em;
+}
+
+.post .row:nth-child(2) {
+  padding-left: 10%;
+}
+
+.post .row:nth-child(2) i {
+  padding-right: 0.2em;
+}
