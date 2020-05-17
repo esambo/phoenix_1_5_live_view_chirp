@@ -9,22 +9,10 @@
     return_to: Routes.post_index_path(@socket, :index) %>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Body</th>
-      <th>Likes count</th>
-      <th>Reposts count</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="posts">
-    <%= for post <- @posts do %>
+<div id="posts">
+  <%= for post <- @posts do %>
     <%= live_component @socket, Phoenix15LiveViewChirpWeb.PostLive.PostComponent, id: post.id, post: post %>
-    <% end %>
-  </tbody>
-</table>
+  <% end %>
+</div>
 
 <span><%= live_patch "New Post", to: Routes.post_index_path(@socket, :new) %></span>
